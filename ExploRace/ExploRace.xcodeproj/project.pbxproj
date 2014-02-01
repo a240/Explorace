@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E2316DC2189B0EA0005FFD1F /* OGKQuickTapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */; };
+		E2CEF35C189A035400344630 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35B189A035400344630 /* Foundation.framework */; };
+		E2CEF35E189A035400344630 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35D189A035400344630 /* CoreGraphics.framework */; };
+		E2CEF360189A035400344630 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35F189A035400344630 /* UIKit.framework */; };
+		E2CEF362189A035400344630 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF361189A035400344630 /* SpriteKit.framework */; };
+		E2CEF368189A035400344630 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2CEF366189A035400344630 /* InfoPlist.strings */; };
+		E2CEF36A189A035400344630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CEF369189A035400344630 /* main.m */; };
+		E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CEF36D189A035400344630 /* OGKAppDelegate.m */; };
+		E2CEF374189A035400344630 /* OGKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CEF373189A035400344630 /* OGKViewController.m */; };
+		E2CEF37B189A035400344630 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2CEF37A189A035400344630 /* Images.xcassets */; };
+		E2CEF382189A035500344630 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF381189A035500344630 /* XCTest.framework */; };
+		E2CEF383189A035500344630 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35B189A035400344630 /* Foundation.framework */; };
+		E2CEF384189A035500344630 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35F189A035400344630 /* UIKit.framework */; };
+		E2CEF38C189A035500344630 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2CEF38A189A035500344630 /* InfoPlist.strings */; };
+		E2CEF38E189A035500344630 /* ExploRaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CEF38D189A035500344630 /* ExploRaceTests.m */; };
+		F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8387189A2887009C9584 /* OGKMapScene.m */; };
+		F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8389189A2887009C9584 /* OGKMenuScene.m */; };
+		F675536D189C61B400E346CE /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F675536C189C61B400E346CE /* main.storyboard */; };
+		F6C22711189CA82000F09E57 /* OGKUIBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22710189CA82000F09E57 /* OGKUIBarNode.m */; };
+		F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22716189CE62800F09E57 /* OGKWorldScene.m */; };
+		F6C2271A189D709800F09E57 /* OGKRect.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22719189D709800F09E57 /* OGKRect.m */; };
+		F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C59397189B78B700CA2AE7 /* OGKPlayer.m */; };
+		F6D76786189AA2B30009A189 /* OGKTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D76785189AA2B30009A189 /* OGKTileMap.m */; };
+		F6D76789189AD85D0009A189 /* OGKTile.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D76788189AD85D0009A189 /* OGKTile.m */; };
+		F6D76791189AEB160009A189 /* OGKTileMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D76790189AEB160009A189 /* OGKTileMapNode.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2CEF385189A035500344630 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2CEF350189A035400344630 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2CEF357189A035400344630;
+			remoteInfo = ExploRace;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E2316DC0189B0EA0005FFD1F /* OGKQuickTapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKQuickTapScene.h; sourceTree = "<group>"; };
+		E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKQuickTapScene.m; sourceTree = "<group>"; };
+		E2CEF358189A035400344630 /* ExploRace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploRace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2CEF35B189A035400344630 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E2CEF35D189A035400344630 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E2CEF35F189A035400344630 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E2CEF361189A035400344630 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		E2CEF365189A035400344630 /* ExploRace-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExploRace-Info.plist"; sourceTree = "<group>"; };
+		E2CEF367189A035400344630 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2CEF369189A035400344630 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E2CEF36B189A035400344630 /* ExploRace-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExploRace-Prefix.pch"; sourceTree = "<group>"; };
+		E2CEF36C189A035400344630 /* OGKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGKAppDelegate.h; sourceTree = "<group>"; };
+		E2CEF36D189A035400344630 /* OGKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGKAppDelegate.m; sourceTree = "<group>"; };
+		E2CEF372189A035400344630 /* OGKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGKViewController.h; sourceTree = "<group>"; };
+		E2CEF373189A035400344630 /* OGKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGKViewController.m; sourceTree = "<group>"; };
+		E2CEF37A189A035400344630 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E2CEF380189A035500344630 /* ExploRaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExploRaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2CEF381189A035500344630 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E2CEF389189A035500344630 /* ExploRaceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExploRaceTests-Info.plist"; sourceTree = "<group>"; };
+		E2CEF38B189A035500344630 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E2CEF38D189A035500344630 /* ExploRaceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploRaceTests.m; sourceTree = "<group>"; };
+		F60C8386189A2887009C9584 /* OGKMapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKMapScene.h; sourceTree = "<group>"; };
+		F60C8387189A2887009C9584 /* OGKMapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMapScene.m; sourceTree = "<group>"; };
+		F60C8388189A2887009C9584 /* OGKMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKMenuScene.h; sourceTree = "<group>"; };
+		F60C8389189A2887009C9584 /* OGKMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMenuScene.m; sourceTree = "<group>"; };
+		F675536C189C61B400E346CE /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		F6C2270F189CA82000F09E57 /* OGKUIBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKUIBarNode.h; sourceTree = "<group>"; };
+		F6C22710189CA82000F09E57 /* OGKUIBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKUIBarNode.m; sourceTree = "<group>"; };
+		F6C22715189CE62800F09E57 /* OGKWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKWorldScene.h; sourceTree = "<group>"; };
+		F6C22716189CE62800F09E57 /* OGKWorldScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKWorldScene.m; sourceTree = "<group>"; };
+		F6C22718189D709800F09E57 /* OGKRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKRect.h; sourceTree = "<group>"; };
+		F6C22719189D709800F09E57 /* OGKRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKRect.m; sourceTree = "<group>"; };
+		F6C59396189B78B700CA2AE7 /* OGKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKPlayer.h; sourceTree = "<group>"; };
+		F6C59397189B78B700CA2AE7 /* OGKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKPlayer.m; sourceTree = "<group>"; };
+		F6D76784189AA2B30009A189 /* OGKTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTileMap.h; sourceTree = "<group>"; };
+		F6D76785189AA2B30009A189 /* OGKTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTileMap.m; sourceTree = "<group>"; };
+		F6D76787189AD85D0009A189 /* OGKTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTile.h; sourceTree = "<group>"; };
+		F6D76788189AD85D0009A189 /* OGKTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTile.m; sourceTree = "<group>"; };
+		F6D7678F189AEB160009A189 /* OGKTileMapNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTileMapNode.h; sourceTree = "<group>"; };
+		F6D76790189AEB160009A189 /* OGKTileMapNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTileMapNode.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2CEF355189A035400344630 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CEF35E189A035400344630 /* CoreGraphics.framework in Frameworks */,
+				E2CEF360189A035400344630 /* UIKit.framework in Frameworks */,
+				E2CEF362189A035400344630 /* SpriteKit.framework in Frameworks */,
+				E2CEF35C189A035400344630 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2CEF37D189A035500344630 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CEF382189A035500344630 /* XCTest.framework in Frameworks */,
+				E2CEF384189A035500344630 /* UIKit.framework in Frameworks */,
+				E2CEF383189A035500344630 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E2316DC3189B0EAE005FFD1F /* Minigames */ = {
+			isa = PBXGroup;
+			children = (
+				E2316DC0189B0EA0005FFD1F /* OGKQuickTapScene.h */,
+				E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */,
+			);
+			name = Minigames;
+			sourceTree = "<group>";
+		};
+		E2CEF34F189A035400344630 = {
+			isa = PBXGroup;
+			children = (
+				E2CEF363189A035400344630 /* ExploRace */,
+				E2CEF387189A035500344630 /* ExploRaceTests */,
+				E2CEF35A189A035400344630 /* Frameworks */,
+				E2CEF359189A035400344630 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2CEF359189A035400344630 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEF358189A035400344630 /* ExploRace.app */,
+				E2CEF380189A035500344630 /* ExploRaceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2CEF35A189A035400344630 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEF35B189A035400344630 /* Foundation.framework */,
+				E2CEF35D189A035400344630 /* CoreGraphics.framework */,
+				E2CEF35F189A035400344630 /* UIKit.framework */,
+				E2CEF361189A035400344630 /* SpriteKit.framework */,
+				E2CEF381189A035500344630 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2CEF363189A035400344630 /* ExploRace */ = {
+			isa = PBXGroup;
+			children = (
+				F6D7678B189AE7DC0009A189 /* Nodes */,
+				F60C838C189A3564009C9584 /* Data Types */,
+				F60C8385189A2874009C9584 /* Scenes */,
+				E2CEF36C189A035400344630 /* OGKAppDelegate.h */,
+				E2CEF36D189A035400344630 /* OGKAppDelegate.m */,
+				E2CEF372189A035400344630 /* OGKViewController.h */,
+				E2CEF373189A035400344630 /* OGKViewController.m */,
+				E2CEF37A189A035400344630 /* Images.xcassets */,
+				E2CEF364189A035400344630 /* Supporting Files */,
+				F675536C189C61B400E346CE /* main.storyboard */,
+			);
+			path = ExploRace;
+			sourceTree = "<group>";
+		};
+		E2CEF364189A035400344630 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEF365189A035400344630 /* ExploRace-Info.plist */,
+				E2CEF366189A035400344630 /* InfoPlist.strings */,
+				E2CEF369189A035400344630 /* main.m */,
+				E2CEF36B189A035400344630 /* ExploRace-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2CEF387189A035500344630 /* ExploRaceTests */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEF38D189A035500344630 /* ExploRaceTests.m */,
+				E2CEF388189A035500344630 /* Supporting Files */,
+			);
+			path = ExploRaceTests;
+			sourceTree = "<group>";
+		};
+		E2CEF388189A035500344630 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2CEF389189A035500344630 /* ExploRaceTests-Info.plist */,
+				E2CEF38A189A035500344630 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F60C8385189A2874009C9584 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E2316DC3189B0EAE005FFD1F /* Minigames */,
+				F60C8386189A2887009C9584 /* OGKMapScene.h */,
+				F60C8387189A2887009C9584 /* OGKMapScene.m */,
+				F60C8388189A2887009C9584 /* OGKMenuScene.h */,
+				F60C8389189A2887009C9584 /* OGKMenuScene.m */,
+				F6C22715189CE62800F09E57 /* OGKWorldScene.h */,
+				F6C22716189CE62800F09E57 /* OGKWorldScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		F60C838C189A3564009C9584 /* Data Types */ = {
+			isa = PBXGroup;
+			children = (
+				F6D76784189AA2B30009A189 /* OGKTileMap.h */,
+				F6D76785189AA2B30009A189 /* OGKTileMap.m */,
+				F6D76787189AD85D0009A189 /* OGKTile.h */,
+				F6D76788189AD85D0009A189 /* OGKTile.m */,
+				F6C22718189D709800F09E57 /* OGKRect.h */,
+				F6C22719189D709800F09E57 /* OGKRect.m */,
+			);
+			name = "Data Types";
+			sourceTree = "<group>";
+		};
+		F6D7678B189AE7DC0009A189 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F6D7678F189AEB160009A189 /* OGKTileMapNode.h */,
+				F6D76790189AEB160009A189 /* OGKTileMapNode.m */,
+				F6C59396189B78B700CA2AE7 /* OGKPlayer.h */,
+				F6C59397189B78B700CA2AE7 /* OGKPlayer.m */,
+				F6C2270F189CA82000F09E57 /* OGKUIBarNode.h */,
+				F6C22710189CA82000F09E57 /* OGKUIBarNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2CEF357189A035400344630 /* ExploRace */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2CEF391189A035500344630 /* Build configuration list for PBXNativeTarget "ExploRace" */;
+			buildPhases = (
+				E2CEF354189A035400344630 /* Sources */,
+				E2CEF355189A035400344630 /* Frameworks */,
+				E2CEF356189A035400344630 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExploRace;
+			productName = ExploRace;
+			productReference = E2CEF358189A035400344630 /* ExploRace.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E2CEF37F189A035500344630 /* ExploRaceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2CEF394189A035500344630 /* Build configuration list for PBXNativeTarget "ExploRaceTests" */;
+			buildPhases = (
+				E2CEF37C189A035500344630 /* Sources */,
+				E2CEF37D189A035500344630 /* Frameworks */,
+				E2CEF37E189A035500344630 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2CEF386189A035500344630 /* PBXTargetDependency */,
+			);
+			name = ExploRaceTests;
+			productName = ExploRaceTests;
+			productReference = E2CEF380189A035500344630 /* ExploRaceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2CEF350189A035400344630 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OGK;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = OGK;
+				TargetAttributes = {
+					E2CEF37F189A035500344630 = {
+						TestTargetID = E2CEF357189A035400344630;
+					};
+				};
+			};
+			buildConfigurationList = E2CEF353189A035400344630 /* Build configuration list for PBXProject "ExploRace" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E2CEF34F189A035400344630;
+			productRefGroup = E2CEF359189A035400344630 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2CEF357189A035400344630 /* ExploRace */,
+				E2CEF37F189A035500344630 /* ExploRaceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2CEF356189A035400344630 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CEF368189A035400344630 /* InfoPlist.strings in Resources */,
+				F675536D189C61B400E346CE /* main.storyboard in Resources */,
+				E2CEF37B189A035400344630 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2CEF37E189A035500344630 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CEF38C189A035500344630 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2CEF354189A035400344630 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6D76786189AA2B30009A189 /* OGKTileMap.m in Sources */,
+				E2316DC2189B0EA0005FFD1F /* OGKQuickTapScene.m in Sources */,
+				F6C22711189CA82000F09E57 /* OGKUIBarNode.m in Sources */,
+				F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */,
+				E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */,
+				F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */,
+				F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */,
+				F6D76789189AD85D0009A189 /* OGKTile.m in Sources */,
+				E2CEF374189A035400344630 /* OGKViewController.m in Sources */,
+				F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */,
+				F6D76791189AEB160009A189 /* OGKTileMapNode.m in Sources */,
+				E2CEF36A189A035400344630 /* main.m in Sources */,
+				F6C2271A189D709800F09E57 /* OGKRect.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2CEF37C189A035500344630 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2CEF38E189A035500344630 /* ExploRaceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2CEF386189A035500344630 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2CEF357189A035400344630 /* ExploRace */;
+			targetProxy = E2CEF385189A035500344630 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E2CEF366189A035400344630 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2CEF367189A035400344630 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E2CEF38A189A035500344630 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2CEF38B189A035500344630 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E2CEF38F189A035500344630 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E2CEF390189A035500344630 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2CEF392189A035500344630 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExploRace/ExploRace-Prefix.pch";
+				INFOPLIST_FILE = "ExploRace/ExploRace-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E2CEF393189A035500344630 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExploRace/ExploRace-Prefix.pch";
+				INFOPLIST_FILE = "ExploRace/ExploRace-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E2CEF395189A035500344630 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExploRace.app/ExploRace";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExploRace/ExploRace-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ExploRaceTests/ExploRaceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E2CEF396189A035500344630 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExploRace.app/ExploRace";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExploRace/ExploRace-Prefix.pch";
+				INFOPLIST_FILE = "ExploRaceTests/ExploRaceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2CEF353189A035400344630 /* Build configuration list for PBXProject "ExploRace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CEF38F189A035500344630 /* Debug */,
+				E2CEF390189A035500344630 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2CEF391189A035500344630 /* Build configuration list for PBXNativeTarget "ExploRace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CEF392189A035500344630 /* Debug */,
+				E2CEF393189A035500344630 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2CEF394189A035500344630 /* Build configuration list for PBXNativeTarget "ExploRaceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CEF395189A035500344630 /* Debug */,
+				E2CEF396189A035500344630 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E2CEF350189A035400344630 /* Project object */;
+}
