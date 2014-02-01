@@ -10,7 +10,7 @@
 #import "OGKTileMap.h"
 #import "OGKTileMapNode.h"
 #import "OGKPlayer.h"
-#import "OGKUIBarNode.h"
+#import "OGKTimerUINode.h"
 
 #define TIME_TO_MOVE 0.2
 #define DEFAULT_FOG_WAR_REMOVAL_RADIUS 0
@@ -27,7 +27,6 @@ typedef NS_ENUM(NSUInteger, StateType) {
 @property OGKTile *currentTile;
 @property OGKPlayer *player;
 @property StateType currentState;
-@property OGKUIBarNode *uiBarNode;
 
 @end
 
@@ -65,13 +64,8 @@ typedef NS_ENUM(NSUInteger, StateType) {
     [self.view addGestureRecognizer:swipeDownDirectionGestureRecognizer];
     [swipeDownDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     
-    // UI
-    SKNode *uiBarNode = [[OGKUIBarNode alloc] init];
-    uiBarNode.position = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - uiBarNode.frame.size.height - [uiBarNode calculateAccumulatedFrame].size.height / 2); // self.view.frame.size.height;
-    [self.uiLayer addChild:uiBarNode];
-    
     // Tile map
-    self.tileMap = [self generateTileMapWithWidth:4 AndHeight:4];
+    self.tileMap = [self generateTileMapWithWidth:6 AndHeight:6];
     self.tileMapNode = [[OGKTileMapNode alloc] initWithTileMap:self.tileMap];
     [self.world addChild:self.tileMapNode];
     
@@ -112,12 +106,15 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (OGKTileMap *)generateTileMapWithWidth:(int)width AndHeight:(int)height
 {
-    NSString *string = @"tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile,tile";
-//    for (int x=0; x < width; x++) {
-//        for (int y=0; y < height; y++) {
-//            // string = [string stringByAppendingString:];
-//        }
-//    }
+    // @TODO make real generation
+    NSString *string = @"";
+    int count = width * height;
+    for (int i = 0; i < count; i++) {
+        string = [string stringByAppendingString:@"tile"];
+        if (i + 1 != count)
+            string = [string stringByAppendingString:@","];
+    }
+    
     OGKTileMap *tileMap = [[OGKTileMap alloc] initWithString:string WithWidth:width];
     return tileMap;
 }

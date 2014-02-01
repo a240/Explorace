@@ -25,7 +25,7 @@
 		F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8387189A2887009C9584 /* OGKMapScene.m */; };
 		F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8389189A2887009C9584 /* OGKMenuScene.m */; };
 		F675536D189C61B400E346CE /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F675536C189C61B400E346CE /* main.storyboard */; };
-		F6C22711189CA82000F09E57 /* OGKUIBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22710189CA82000F09E57 /* OGKUIBarNode.m */; };
+		F6C22711189CA82000F09E57 /* OGKTimerUINode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22710189CA82000F09E57 /* OGKTimerUINode.m */; };
 		F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22716189CE62800F09E57 /* OGKWorldScene.m */; };
 		F6C2271A189D709800F09E57 /* OGKRect.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22719189D709800F09E57 /* OGKRect.m */; };
 		F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C59397189B78B700CA2AE7 /* OGKPlayer.m */; };
@@ -71,8 +71,8 @@
 		F60C8388189A2887009C9584 /* OGKMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKMenuScene.h; sourceTree = "<group>"; };
 		F60C8389189A2887009C9584 /* OGKMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMenuScene.m; sourceTree = "<group>"; };
 		F675536C189C61B400E346CE /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
-		F6C2270F189CA82000F09E57 /* OGKUIBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKUIBarNode.h; sourceTree = "<group>"; };
-		F6C22710189CA82000F09E57 /* OGKUIBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKUIBarNode.m; sourceTree = "<group>"; };
+		F6C2270F189CA82000F09E57 /* OGKTimerUINode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTimerUINode.h; sourceTree = "<group>"; };
+		F6C22710189CA82000F09E57 /* OGKTimerUINode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTimerUINode.m; sourceTree = "<group>"; };
 		F6C22715189CE62800F09E57 /* OGKWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKWorldScene.h; sourceTree = "<group>"; };
 		F6C22716189CE62800F09E57 /* OGKWorldScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKWorldScene.m; sourceTree = "<group>"; };
 		F6C22718189D709800F09E57 /* OGKRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKRect.h; sourceTree = "<group>"; };
@@ -232,8 +232,8 @@
 				F6D76790189AEB160009A189 /* OGKTileMapNode.m */,
 				F6C59396189B78B700CA2AE7 /* OGKPlayer.h */,
 				F6C59397189B78B700CA2AE7 /* OGKPlayer.m */,
-				F6C2270F189CA82000F09E57 /* OGKUIBarNode.h */,
-				F6C22710189CA82000F09E57 /* OGKUIBarNode.m */,
+				F6C2270F189CA82000F09E57 /* OGKTimerUINode.h */,
+				F6C22710189CA82000F09E57 /* OGKTimerUINode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 			files = (
 				F6D76786189AA2B30009A189 /* OGKTileMap.m in Sources */,
 				E2316DC2189B0EA0005FFD1F /* OGKQuickTapScene.m in Sources */,
-				F6C22711189CA82000F09E57 /* OGKUIBarNode.m in Sources */,
+				F6C22711189CA82000F09E57 /* OGKTimerUINode.m in Sources */,
 				F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */,
 				E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */,
 				F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */,

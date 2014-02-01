@@ -2,12 +2,17 @@
 //  OGKViewController.m
 //  ExploRace
 //
-//  Created by Christopher Sprague on 1/29/14.
+//  Created by David Samuelson on 1/29/14.
 //  Copyright (c) 2014 OGK. All rights reserved.
 //
 
 #import "OGKViewController.h"
 #import "OGKMenuScene.h"
+#import "OGKMapScene.h"
+
+@interface OGKViewController ()
+
+@end
 
 @implementation OGKViewController
 
@@ -21,7 +26,8 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [OGKMenuScene sceneWithSize:skView.bounds.size];
+    // SKScene * scene = [OGKMenuScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [OGKMapScene sceneWithSize:skView.bounds.size];
     
     // Present the scene.
     [skView presentScene:scene];

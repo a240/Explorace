@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface OGKUIBarNode : SKNode
+@interface OGKTimerUINode : SKNode
 
 @property NSNumber *timeLeft;
 

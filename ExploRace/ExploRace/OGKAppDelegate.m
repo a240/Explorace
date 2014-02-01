@@ -2,7 +2,7 @@
 //  OGKAppDelegate.m
 //  ExploRace
 //
-//  Created by Christopher Sprague on 1/29/14.
+//  Created by David Samuelson on 1/29/14.
 //  Copyright (c) 2014 OGK. All rights reserved.
 //
 

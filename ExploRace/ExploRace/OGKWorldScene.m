@@ -7,11 +7,13 @@
 //
 
 #import "OGKWorldScene.h"
+#import "OGKTimerUINode.h"
 
 @interface OGKWorldScene ()
 
 @property BOOL contentCreated;
 @property SKNode *cameraTarget;
+@property OGKTimerUINode *timerNode;
 
 @end
 
@@ -30,10 +32,16 @@
 - (void)createContent
 {
     // Setup layers
-    self.world = [[SKNode alloc] init];
+    self.world = [[SKCropNode alloc] init];
     self.uiLayer = [[SKNode alloc] init];
     [self addChild:self.world];
     [self addChild:self.uiLayer];
+    
+    // Add Timer
+    self.timerNode = [[OGKTimerUINode alloc] init];
+    CGRect timerNodeRect = [self.timerNode calculateAccumulatedFrame];
+    self.timerNode.position = CGPointMake(0, self.size.height - timerNodeRect.size.height);
+    [self.uiLayer addChild:self.timerNode];
     
     // Camera
     self.camera = [SKNode node];
@@ -59,7 +67,7 @@
 {
     // Move Camera to camera target
     if (self.cameraTarget != nil) {
-        self.camera.position = CGPointMake(self.cameraTarget.position.x - self.scene.frame.size.width / 2, self.cameraTarget.position.y - self.scene.frame.size.height / 2);
+        self.camera.position = CGPointMake(self.cameraTarget.position.x - self.size.width / 2, self.cameraTarget.position.y - self.size.height / 2);
     }
     
     if (self.cameraBounds != nil) {

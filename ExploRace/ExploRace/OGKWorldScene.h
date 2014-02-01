@@ -13,7 +13,8 @@
 
 @property SKNode *camera;
 @property OGKRect *cameraBounds;
-@property SKNode *world;
+@property SKCropNode *world;
+@property (readonly) OGKRect *worldViewBounds;
 @property SKNode *uiLayer;
 
 - (void)createContent;
