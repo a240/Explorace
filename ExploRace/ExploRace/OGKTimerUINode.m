@@ -35,10 +35,21 @@
         self.timeLeftLabelNode.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
         self.timeLeftLabelNode.position = CGPointMake( self.timerSpriteNode.position.x + self.timerSpriteNode.size.width + PADDING, self.timerSpriteNode.position.y);
         [self addChild:self.timeLeftLabelNode];
-        
-        self.timeLeft = [NSNumber numberWithDouble:0];
     }
     return self;
+}
+
+- (void)setTime:(int)time
+{
+    int currentMinute = time / 60;
+    int currentSecond = time % 60;
+    
+    NSString *second = [[NSNumber numberWithInt:currentSecond] stringValue];
+    
+    if (currentSecond < 10)
+        second = [@"0" stringByAppendingString:second];
+    
+    self.timeLeftLabelNode.text = [NSString stringWithFormat:@"%d:%@", currentMinute, second];
 }
 
 @end

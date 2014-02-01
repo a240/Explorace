@@ -10,6 +10,6 @@
 
 @interface OGKTimerUINode : SKNode
 
-@property NSNumber *timeLeft;
+- (void)setTime:(int)time;
 
 @end

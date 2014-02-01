@@ -8,12 +8,15 @@
 
 #import "OGKWorldScene.h"
 #import "OGKTimerUINode.h"
+#import "OGKGameTimer.h"
+#define DEFAULT_TIME_TO_PLAY 180
 
 @interface OGKWorldScene ()
 
 @property BOOL contentCreated;
 @property SKNode *cameraTarget;
 @property OGKTimerUINode *timerNode;
+@property OGKGameTimer *gameTimer;
 
 @end
 
@@ -37,6 +40,10 @@
     [self addChild:self.world];
     [self addChild:self.uiLayer];
     
+    // Game Timer
+    self.gameTimer = [OGKGameTimer sharedInstance];
+    [self.gameTimer runForTime:DEFAULT_TIME_TO_PLAY];
+    
     // Add Timer
     self.timerNode = [[OGKTimerUINode alloc] init];
     CGRect timerNodeRect = [self.timerNode calculateAccumulatedFrame];
@@ -45,6 +52,7 @@
     
     // Camera
     self.camera = [SKNode node];
+    
 }
 
 - (void)cameraFollowNode:(SKNode *)node
@@ -56,6 +64,11 @@
 {
     CGRect worldRect = [self.world calculateAccumulatedFrame];
     self.cameraBounds = [[OGKRect alloc] initWithX:self.world.position.x Y:self.world.position.y Width:worldRect.size.width Height:worldRect.size.height];
+}
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    [self.timerNode setTime:self.gameTimer.getTimeLeft];
 }
 
 - (void)didSimulatePhysics

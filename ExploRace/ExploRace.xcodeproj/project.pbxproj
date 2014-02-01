@@ -24,6 +24,7 @@
 		E2CEF38E189A035500344630 /* ExploRaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CEF38D189A035500344630 /* ExploRaceTests.m */; };
 		F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8387189A2887009C9584 /* OGKMapScene.m */; };
 		F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8389189A2887009C9584 /* OGKMenuScene.m */; };
+		F6177F9F189D909900158A3E /* OGKGameTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6177F9E189D909900158A3E /* OGKGameTimer.m */; };
 		F675536D189C61B400E346CE /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F675536C189C61B400E346CE /* main.storyboard */; };
 		F6C22711189CA82000F09E57 /* OGKTimerUINode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22710189CA82000F09E57 /* OGKTimerUINode.m */; };
 		F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22716189CE62800F09E57 /* OGKWorldScene.m */; };
@@ -70,6 +71,8 @@
 		F60C8387189A2887009C9584 /* OGKMapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMapScene.m; sourceTree = "<group>"; };
 		F60C8388189A2887009C9584 /* OGKMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKMenuScene.h; sourceTree = "<group>"; };
 		F60C8389189A2887009C9584 /* OGKMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMenuScene.m; sourceTree = "<group>"; };
+		F6177F9D189D909900158A3E /* OGKGameTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKGameTimer.h; sourceTree = "<group>"; };
+		F6177F9E189D909900158A3E /* OGKGameTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKGameTimer.m; sourceTree = "<group>"; };
 		F675536C189C61B400E346CE /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		F6C2270F189CA82000F09E57 /* OGKTimerUINode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTimerUINode.h; sourceTree = "<group>"; };
 		F6C22710189CA82000F09E57 /* OGKTimerUINode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTimerUINode.m; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				F6D76788189AD85D0009A189 /* OGKTile.m */,
 				F6C22718189D709800F09E57 /* OGKRect.h */,
 				F6C22719189D709800F09E57 /* OGKRect.m */,
+				F6177F9D189D909900158A3E /* OGKGameTimer.h */,
+				F6177F9E189D909900158A3E /* OGKGameTimer.m */,
 			);
 			name = "Data Types";
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */,
 				F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */,
 				F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */,
+				F6177F9F189D909900158A3E /* OGKGameTimer.m in Sources */,
 				F6D76789189AD85D0009A189 /* OGKTile.m in Sources */,
 				E2CEF374189A035400344630 /* OGKViewController.m in Sources */,
 				F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */,
