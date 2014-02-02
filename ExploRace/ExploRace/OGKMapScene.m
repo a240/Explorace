@@ -10,7 +10,7 @@
 #import "OGKTileMap.h"
 #import "OGKTileMapNode.h"
 #import "OGKPlayer.h"
-#import "OGKTimerUINode.h"
+#import "OGKMiniGameScene.h"
 
 #define TIME_TO_MOVE 0.2
 
@@ -27,6 +27,11 @@ typedef NS_ENUM(NSUInteger, StateType) {
 @property OGKPlayer *player;
 @property StateType currentState;
 
+@property UISwipeGestureRecognizer *swipeLeftDirectionGestureRecognizer;
+@property UISwipeGestureRecognizer *swipeRightDirectionGestureRecognizer;
+@property UISwipeGestureRecognizer *swipeDownDirectionGestureRecognizer;
+@property UISwipeGestureRecognizer *swipeUpDirectionGestureRecognizer;
+
 @end
 
 @implementation OGKMapScene
@@ -37,6 +42,18 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
 }
 
+- (void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    
+    [self addSwipGestures];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+}
+
 - (void)didSimulatePhysics
 {
     [super didSimulatePhysics];
@@ -45,23 +62,6 @@ typedef NS_ENUM(NSUInteger, StateType) {
 - (void)createContent
 {
     [super createContent];
-    
-    // Movement Gestures
-    UISwipeGestureRecognizer *swipeLeftDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipLeftDirection:)];
-    [self.view addGestureRecognizer:swipeLeftDirectionGestureRecognizer];
-    [swipeLeftDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
-    
-    UISwipeGestureRecognizer *swipeRightDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipRightDirection:)];
-    [self.view addGestureRecognizer:swipeRightDirectionGestureRecognizer];
-    [swipeRightDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
-    
-    UISwipeGestureRecognizer *swipeUpDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
-    [self.view addGestureRecognizer:swipeUpDirectionGestureRecognizer];
-    [swipeUpDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
-    
-    UISwipeGestureRecognizer *swipeDownDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipDownDirection:)];
-    [self.view addGestureRecognizer:swipeDownDirectionGestureRecognizer];
-    [swipeDownDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     
     // Tile map
     self.tileMap = [self generateTileMapWithWidth:6 AndHeight:6];
@@ -83,12 +83,32 @@ typedef NS_ENUM(NSUInteger, StateType) {
     self.currentState = StateTypeReadyToMove;
 }
 
-
+- (void)addSwipGestures
+{
+    // Movement Gestures
+    self.swipeLeftDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipLeftDirection:)];
+    [self.swipeLeftDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:self.swipeLeftDirectionGestureRecognizer];
+    
+    self.swipeRightDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipRightDirection:)];
+    [self.view addGestureRecognizer:self.swipeRightDirectionGestureRecognizer];
+    [self.swipeRightDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    self.swipeUpDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
+    [self.view addGestureRecognizer:self.swipeUpDirectionGestureRecognizer];
+    [self.swipeUpDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
+    
+    self.swipeDownDirectionGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipDownDirection:)];
+    [self.view addGestureRecognizer:self.swipeDownDirectionGestureRecognizer];
+    [self.swipeDownDirectionGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+}
 
 - (void)removeEvilCloudFromTileAtX:(int)tileX Y:(int)tileY Radius:(int)radius
 {
+    SKAction *fadeRemove = [SKAction sequence:@[[SKAction fadeAlphaTo:0 duration:0.3], [SKAction removeFromParent]]];
     if (radius == 0)
     {
+        [[self.tileMapNode getEvilCloudAtX:tileX Y:tileY] runAction:fadeRemove];
         [self.tileMap getTileAtX:tileX Y:tileY].isEvil = NO;
         return;
     }
@@ -97,6 +117,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
         for (int y = tileY - radius; y < tileY + radius; y++) {
             if ([self.tileMap checkTileExistAtX:x Y:y])
             {
+                [[self.tileMapNode getEvilCloudAtX:tileX Y:tileY] runAction:fadeRemove];
                 [self.tileMap getTileAtX:x Y:y].isEvil = NO;
             }
         }
@@ -109,7 +130,8 @@ typedef NS_ENUM(NSUInteger, StateType) {
     int count = width * height;
     NSArray *tilePool = @[@"BlankTile", @"LakeTile", @"MountainTile", @"SwampTile", @"ValleyTile"];
     NSMutableArray *tilesStringArray = [[NSMutableArray alloc] initWithCapacity:count];
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         NSString *tileName = tilePool[arc4random() % [tilePool count]];
         [tilesStringArray addObject:tileName];
     }
@@ -120,6 +142,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
     OGKTileMap *tileMap = [[OGKTileMap alloc] initWithArray:tilesStringArray WithWidth:width];
     
+    //
     for (OGKTile *tile in [tileMap getTilesWithName:@"CrystalTile"])
     {
         tile.isGoal = YES;
@@ -167,8 +190,6 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
     self.currentState = StateTypeMoving;
     
-    [self removeEvilCloudFromTileAtX:tile.x Y:tile.y Radius:0];
-    
     // Move player to tile
     SKSpriteNode *targetTileNode = [self.tileMapNode getTileNodeAtX:tile.x
                                                                   Y:tile.y];
@@ -183,7 +204,10 @@ typedef NS_ENUM(NSUInteger, StateType) {
         }
         if (self.currentTile.isEvil)
         {
-            // [self playMiniGame];
+            [self removeEvilCloudFromTileAtX:tile.x Y:tile.y Radius:0];
+            [self runAction:[SKAction sequence:@[[SKAction waitForDuration:1], [SKAction runBlock:^{
+                [self playMiniGame];
+            }]]]];
         }
     }];
     
@@ -191,10 +215,12 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (void)playMiniGame
 {
-    NSArray *miniGameScenes = @[NSClassFromString(@"OGKQuickTapScene")];
+    NSArray *miniGameScenes = @[NSClassFromString(@"OGKBubbleTapScene")];
+    
     uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
     Class sceneClass = [miniGameScenes objectAtIndex:rand];
-    SKScene *miniGameScene = [[sceneClass alloc] initWithSize:self.size];
+    OGKMiniGameScene *miniGameScene = [[sceneClass alloc] initWithSize:self.size ReturnScene:self];
+    
     SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration:0.5];
     [self.view presentScene:miniGameScene transition:doors];
 }

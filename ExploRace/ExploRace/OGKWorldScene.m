@@ -32,11 +32,20 @@
     }
 }
 
+- (void)willMoveFromView:(SKView *)view
+{
+    for (UIGestureRecognizer *recognizer in self.view.gestureRecognizers) {
+        [self.view removeGestureRecognizer:recognizer];
+    }
+}
+
 - (void)createContent
 {
     // Setup layers
+    self.backgroundLayer = [[SKNode alloc] init];
     self.world = [[SKCropNode alloc] init];
     self.uiLayer = [[SKNode alloc] init];
+    [self addChild:self.backgroundLayer];
     [self addChild:self.world];
     [self addChild:self.uiLayer];
     
@@ -53,8 +62,18 @@
     // Camera
     self.camera = [SKNode node];
     
+    self.currentState = GameStatePlaying;
     
 }
+
+- (SKSpriteNode *)addBackgroundImageFromName:(NSString *)name
+{
+    SKSpriteNode *backgroundImageNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:name]];
+    backgroundImageNode.anchorPoint = CGPointZero;
+    [self.backgroundLayer addChild:backgroundImageNode];
+    return backgroundImageNode;
+}
+
 
 - (void)cameraFollowNode:(SKNode *)node
 {

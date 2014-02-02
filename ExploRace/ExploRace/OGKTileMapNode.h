@@ -13,5 +13,6 @@
 
 - (instancetype)initWithTileMap:(OGKTileMap *)tileMap;
 - (SKSpriteNode *)getTileNodeAtX:(int)x Y:(int)y;
+- (SKSpriteNode *)getEvilCloudAtX:(int)x Y:(int)y;
 
 @end

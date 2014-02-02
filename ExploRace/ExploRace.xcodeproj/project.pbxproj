@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2316DC2189B0EA0005FFD1F /* OGKQuickTapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */; };
 		E2CEF35C189A035400344630 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35B189A035400344630 /* Foundation.framework */; };
 		E2CEF35E189A035400344630 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35D189A035400344630 /* CoreGraphics.framework */; };
 		E2CEF360189A035400344630 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35F189A035400344630 /* UIKit.framework */; };
@@ -25,6 +24,11 @@
 		F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8387189A2887009C9584 /* OGKMapScene.m */; };
 		F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F60C8389189A2887009C9584 /* OGKMenuScene.m */; };
 		F6177F9F189D909900158A3E /* OGKGameTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6177F9E189D909900158A3E /* OGKGameTimer.m */; };
+		F6177FA5189E01AB00158A3E /* OGKBubbleTapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6177FA4189E01AB00158A3E /* OGKBubbleTapScene.m */; };
+		F6177FA8189E1DA500158A3E /* OGKMiniGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6177FA7189E1DA500158A3E /* OGKMiniGameScene.m */; };
+		F64062AD189EA0B9004F65DB /* OGKFishCollectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F64062AC189EA0B9004F65DB /* OGKFishCollectScene.m */; };
+		F64062AF189EAF3C004F65DB /* HARDCOREXXX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F64062AE189EAF3C004F65DB /* HARDCOREXXX.mp3 */; };
+		F64062B2189EB01F004F65DB /* OGKWinScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F64062B1189EB01F004F65DB /* OGKWinScene.m */; };
 		F675536D189C61B400E346CE /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F675536C189C61B400E346CE /* main.storyboard */; };
 		F6C22711189CA82000F09E57 /* OGKTimerUINode.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22710189CA82000F09E57 /* OGKTimerUINode.m */; };
 		F6C22717189CE62800F09E57 /* OGKWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C22716189CE62800F09E57 /* OGKWorldScene.m */; };
@@ -46,8 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E2316DC0189B0EA0005FFD1F /* OGKQuickTapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKQuickTapScene.h; sourceTree = "<group>"; };
-		E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKQuickTapScene.m; sourceTree = "<group>"; };
 		E2CEF358189A035400344630 /* ExploRace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploRace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2CEF35B189A035400344630 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2CEF35D189A035400344630 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,6 +75,15 @@
 		F60C8389189A2887009C9584 /* OGKMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMenuScene.m; sourceTree = "<group>"; };
 		F6177F9D189D909900158A3E /* OGKGameTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKGameTimer.h; sourceTree = "<group>"; };
 		F6177F9E189D909900158A3E /* OGKGameTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKGameTimer.m; sourceTree = "<group>"; };
+		F6177FA3189E01AB00158A3E /* OGKBubbleTapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKBubbleTapScene.h; sourceTree = "<group>"; };
+		F6177FA4189E01AB00158A3E /* OGKBubbleTapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKBubbleTapScene.m; sourceTree = "<group>"; };
+		F6177FA6189E1DA500158A3E /* OGKMiniGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKMiniGameScene.h; sourceTree = "<group>"; };
+		F6177FA7189E1DA500158A3E /* OGKMiniGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKMiniGameScene.m; sourceTree = "<group>"; };
+		F64062AB189EA0B9004F65DB /* OGKFishCollectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKFishCollectScene.h; sourceTree = "<group>"; };
+		F64062AC189EA0B9004F65DB /* OGKFishCollectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKFishCollectScene.m; sourceTree = "<group>"; };
+		F64062AE189EAF3C004F65DB /* HARDCOREXXX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARDCOREXXX.mp3; sourceTree = "<group>"; };
+		F64062B0189EB01F004F65DB /* OGKWinScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKWinScene.h; sourceTree = "<group>"; };
+		F64062B1189EB01F004F65DB /* OGKWinScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKWinScene.m; sourceTree = "<group>"; };
 		F675536C189C61B400E346CE /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		F6C2270F189CA82000F09E57 /* OGKTimerUINode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKTimerUINode.h; sourceTree = "<group>"; };
 		F6C22710189CA82000F09E57 /* OGKTimerUINode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKTimerUINode.m; sourceTree = "<group>"; };
@@ -118,8 +129,12 @@
 		E2316DC3189B0EAE005FFD1F /* Minigames */ = {
 			isa = PBXGroup;
 			children = (
-				E2316DC0189B0EA0005FFD1F /* OGKQuickTapScene.h */,
-				E2316DC1189B0EA0005FFD1F /* OGKQuickTapScene.m */,
+				F6177FA3189E01AB00158A3E /* OGKBubbleTapScene.h */,
+				F6177FA4189E01AB00158A3E /* OGKBubbleTapScene.m */,
+				F6177FA6189E1DA500158A3E /* OGKMiniGameScene.h */,
+				F6177FA7189E1DA500158A3E /* OGKMiniGameScene.m */,
+				F64062AB189EA0B9004F65DB /* OGKFishCollectScene.h */,
+				F64062AC189EA0B9004F65DB /* OGKFishCollectScene.m */,
 			);
 			name = Minigames;
 			sourceTree = "<group>";
@@ -158,6 +173,7 @@
 		E2CEF363189A035400344630 /* ExploRace */ = {
 			isa = PBXGroup;
 			children = (
+				F64062B3189EB028004F65DB /* Sound */,
 				F6D7678B189AE7DC0009A189 /* Nodes */,
 				F60C838C189A3564009C9584 /* Data Types */,
 				F60C8385189A2874009C9584 /* Scenes */,
@@ -211,6 +227,8 @@
 				F60C8389189A2887009C9584 /* OGKMenuScene.m */,
 				F6C22715189CE62800F09E57 /* OGKWorldScene.h */,
 				F6C22716189CE62800F09E57 /* OGKWorldScene.m */,
+				F64062B0189EB01F004F65DB /* OGKWinScene.h */,
+				F64062B1189EB01F004F65DB /* OGKWinScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -228,6 +246,14 @@
 				F6177F9E189D909900158A3E /* OGKGameTimer.m */,
 			);
 			name = "Data Types";
+			sourceTree = "<group>";
+		};
+		F64062B3189EB028004F65DB /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				F64062AE189EAF3C004F65DB /* HARDCOREXXX.mp3 */,
+			);
+			name = Sound;
 			sourceTree = "<group>";
 		};
 		F6D7678B189AE7DC0009A189 /* Nodes */ = {
@@ -323,6 +349,7 @@
 				E2CEF368189A035400344630 /* InfoPlist.strings in Resources */,
 				F675536D189C61B400E346CE /* main.storyboard in Resources */,
 				E2CEF37B189A035400344630 /* Images.xcassets in Resources */,
+				F64062AF189EAF3C004F65DB /* HARDCOREXXX.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,13 +368,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6177FA8189E1DA500158A3E /* OGKMiniGameScene.m in Sources */,
+				F64062B2189EB01F004F65DB /* OGKWinScene.m in Sources */,
 				F6D76786189AA2B30009A189 /* OGKTileMap.m in Sources */,
-				E2316DC2189B0EA0005FFD1F /* OGKQuickTapScene.m in Sources */,
 				F6C22711189CA82000F09E57 /* OGKTimerUINode.m in Sources */,
 				F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */,
 				E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */,
 				F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */,
 				F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */,
+				F6177FA5189E01AB00158A3E /* OGKBubbleTapScene.m in Sources */,
 				F6177F9F189D909900158A3E /* OGKGameTimer.m in Sources */,
 				F6D76789189AD85D0009A189 /* OGKTile.m in Sources */,
 				E2CEF374189A035400344630 /* OGKViewController.m in Sources */,
@@ -355,6 +384,7 @@
 				F6D76791189AEB160009A189 /* OGKTileMapNode.m in Sources */,
 				E2CEF36A189A035400344630 /* main.m in Sources */,
 				F6C2271A189D709800F09E57 /* OGKRect.m in Sources */,
+				F64062AD189EA0B9004F65DB /* OGKFishCollectScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

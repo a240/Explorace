@@ -78,4 +78,10 @@
         return nil;
 }
 
+- (SKSpriteNode *)getEvilCloudAtX:(int)x Y:(int)y
+{
+    NSString *key = [NSString stringWithFormat:@"X%dY%d", x, y];
+    return self.evilCloudTileNodes[key];
+}
+
 @end

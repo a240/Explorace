@@ -8,7 +8,6 @@
 
 #import "OGKMenuScene.h"
 #import "OGKMapScene.h"
-#import "OGKQuickTapScene.h"
 
 @interface OGKMenuScene ()
 

@@ -9,8 +9,12 @@
 #import "OGKViewController.h"
 #import "OGKMenuScene.h"
 #import "OGKMapScene.h"
+#import "OGKBubbleTapScene.h"
+@import AVFoundation;
 
 @interface OGKViewController ()
+
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
 
 @end
 
@@ -31,6 +35,14 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    
+    // Play Music
+    NSError *error;
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"HARDCOREXXX" withExtension:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
 }
 
 - (BOOL)shouldAutorotate
