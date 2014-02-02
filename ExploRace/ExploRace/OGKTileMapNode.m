@@ -14,6 +14,7 @@
 @property OGKTileMap *tileMap;
 
 @property NSMutableDictionary *tileNodes;
+@property NSMutableDictionary *evilCloudTileNodes;
 
 @end
 
@@ -32,21 +33,36 @@
 - (void)generateTiles
 {
     self.tileNodes = [[NSMutableDictionary alloc] initWithCapacity:self.tileMap.widthInTiles * self.tileMap.heightInTiles];
+    self.evilCloudTileNodes = [[NSMutableDictionary alloc] initWithCapacity:self.tileMap.widthInTiles * self.tileMap.heightInTiles];
     
     for (int x=0; x < self.tileMap.widthInTiles; x++) {
         for (int y=0; y < self.tileMap.heightInTiles; y++) {
             OGKTile *tile = [self.tileMap getTileAtX:x Y:y];
             NSString *name = tile.name;
-            if (tile.isEvil)
-                name = [name stringByAppendingString:@"Evil"];
-            else
-                name = [name stringByAppendingString:@"Good"];
+            
             SKSpriteNode *tileNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:name]];
-            tileNode.position = CGPointMake(tileNode.frame.size.width * (x + 0.5), tileNode.frame.size.height * (y + 0.5));
+            CGPoint tilePositionPoint = CGPointMake(tileNode.frame.size.width * (x + 0.5), tileNode.frame.size.height * (y + 0.5));
+            tileNode.position = tilePositionPoint;
             [self addChild:tileNode];
             
             // Add tileNode to Dictionay
             [self.tileNodes setObject:tileNode forKey:[NSString stringWithFormat:@"X%dY%d", x, y]];
+            
+            if (tile.isEvil) {
+                SKSpriteNode *evilCloudNode = [SKSpriteNode spriteNodeWithImageNamed:@"EvilCloudTile"];
+                [self.evilCloudTileNodes setObject:evilCloudNode forKey:[NSString stringWithFormat:@"X%dY%d", x, y]];
+                evilCloudNode.position = tilePositionPoint;
+                [self addChild:evilCloudNode];
+                float randomScaleValue = (arc4random() % 11) * 0.01 + 0.9;
+                float randomTime = (arc4random() % 11) * 0.1;
+                SKAction *randomScale = [SKAction scaleTo:randomScaleValue duration:randomTime];
+                SKAction *scaleDown = [SKAction scaleTo:0.9 duration:1];
+                SKAction *scaleUp = [SKAction scaleTo:1 duration:1];
+                SKAction *pulseScale = [SKAction sequence:@[scaleDown, scaleUp]];
+                SKAction *pulseForever = [SKAction repeatActionForever:pulseScale];
+                SKAction *randomScaleThenPulseForever = [SKAction sequence:@[randomScale, pulseForever]];
+                [evilCloudNode runAction:randomScaleThenPulseForever];
+            }
         }
     }
 }

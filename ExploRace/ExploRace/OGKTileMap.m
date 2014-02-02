@@ -28,8 +28,27 @@
         self.tiles = [[NSMutableDictionary alloc] initWithCapacity:_count];
         for (int x = 0; x < self.widthInTiles; x++) {
             for (int y = 0; y < self.heightInTiles; y++) {
-                OGKTile *tile = [[OGKTile alloc] initWithName:tileStrings[x * self.widthInTiles + y] X:x Y:y];
+                OGKTile *tile = [[OGKTile alloc] initWithName:tileStrings[x * _widthInTiles + y] X:x Y:y];
                 tile.name = tileStrings[x * _widthInTiles + y];
+                [self.tiles setObject: tile
+                               forKey:[NSString stringWithFormat:@"X%dY%d", x, y]];
+            }
+        }
+    }
+    return self;
+}
+
+- (instancetype)initWithArray:(NSArray *)array WithWidth:(int)width
+{
+    if (self = [super init])
+    {
+        _widthInTiles = width;
+        _heightInTiles = array.count / width;
+        self.tiles = [[NSMutableDictionary alloc] initWithCapacity:_count];
+        for (int x = 0; x < self.widthInTiles; x++) {
+            for (int y = 0; y < self.heightInTiles; y++) {
+                OGKTile *tile = [[OGKTile alloc] initWithName:array[x * _widthInTiles + y] X:x Y:y];
+                tile.name = array[x * _widthInTiles + y];
                 [self.tiles setObject: tile
                                forKey:[NSString stringWithFormat:@"X%dY%d", x, y]];
             }
@@ -47,6 +66,19 @@
     }
     else
         return nil;
+}
+
+- (NSArray *)getTilesWithName:(NSString *)name
+{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int x=0; x < self.widthInTiles; x++) {
+        for (int y=0; y < self.heightInTiles; y++) {
+            OGKTile *tile = [self getTileAtX:x Y:y];
+            if ([tile.name isEqualToString:name])
+                [array addObject:tile];
+        }
+    }
+    return array;
 }
 
 - (BOOL)checkTileExistAtX:(int)x Y:(int)y

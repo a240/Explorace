@@ -9,7 +9,7 @@
 #import "OGKWorldScene.h"
 #import "OGKTimerUINode.h"
 #import "OGKGameTimer.h"
-#define DEFAULT_TIME_TO_PLAY 180
+#define DEFAULT_TIME_TO_PLAY 10
 
 @interface OGKWorldScene ()
 
@@ -52,6 +52,7 @@
     
     // Camera
     self.camera = [SKNode node];
+    
     
 }
 

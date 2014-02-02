@@ -13,7 +13,6 @@
 #import "OGKTimerUINode.h"
 
 #define TIME_TO_MOVE 0.2
-#define DEFAULT_FOG_WAR_REMOVAL_RADIUS 0
 
 @interface OGKMapScene ()
 
@@ -86,11 +85,11 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 
 
-- (void)removeFogOfWarFromTileAtX:(int)tileX Y:(int)tileY Radius:(int)radius
+- (void)removeEvilCloudFromTileAtX:(int)tileX Y:(int)tileY Radius:(int)radius
 {
     if (radius == 0)
     {
-        [self.tileMap getTileAtX:tileX Y:tileY].hasFogOfWar = NO;
+        [self.tileMap getTileAtX:tileX Y:tileY].isEvil = NO;
         return;
     }
     
@@ -98,7 +97,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
         for (int y = tileY - radius; y < tileY + radius; y++) {
             if ([self.tileMap checkTileExistAtX:x Y:y])
             {
-                [self.tileMap getTileAtX:x Y:y].hasFogOfWar = NO;
+                [self.tileMap getTileAtX:x Y:y].isEvil = NO;
             }
         }
     }
@@ -107,15 +106,26 @@ typedef NS_ENUM(NSUInteger, StateType) {
 - (OGKTileMap *)generateTileMapWithWidth:(int)width AndHeight:(int)height
 {
     // @TODO make real generation
-    NSString *string = @"";
     int count = width * height;
+    NSArray *tilePool = @[@"BlankTile", @"LakeTile", @"MountainTile", @"SwampTile", @"ValleyTile"];
+    NSMutableArray *tilesStringArray = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; i++) {
-        string = [string stringByAppendingString:@"tile"];
-        if (i + 1 != count)
-            string = [string stringByAppendingString:@","];
+        NSString *tileName = tilePool[arc4random() % [tilePool count]];
+        [tilesStringArray addObject:tileName];
     }
     
-    OGKTileMap *tileMap = [[OGKTileMap alloc] initWithString:string WithWidth:width];
+    int spawnIndex = arc4random() % count;
+    
+    [tilesStringArray replaceObjectAtIndex:spawnIndex withObject:@"CrystalTile"];
+    
+    OGKTileMap *tileMap = [[OGKTileMap alloc] initWithArray:tilesStringArray WithWidth:width];
+    
+    for (OGKTile *tile in [tileMap getTilesWithName:@"CrystalTile"])
+    {
+        tile.isGoal = YES;
+        tile.isEvil = NO;
+    }
+    
     return tileMap;
 }
 
@@ -157,8 +167,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
     self.currentState = StateTypeMoving;
     
-    // Remove the fog of war in target tile
-    [self removeFogOfWarFromTileAtX:tile.x Y:tile.y Radius:DEFAULT_FOG_WAR_REMOVAL_RADIUS];
+    [self removeEvilCloudFromTileAtX:tile.x Y:tile.y Radius:0];
     
     // Move player to tile
     SKSpriteNode *targetTileNode = [self.tileMapNode getTileNodeAtX:tile.x
@@ -168,7 +177,14 @@ typedef NS_ENUM(NSUInteger, StateType) {
     [self.player runAction:movePlayer completion:^{
         self.currentState = StateTypeReadyToMove;
         self.currentTile = tile;
-        // [self playMiniGame];
+        if (self.currentTile.isGoal)
+        {
+            NSLog(@"YOU WIN");
+        }
+        if (self.currentTile.isEvil)
+        {
+            // [self playMiniGame];
+        }
     }];
     
 }

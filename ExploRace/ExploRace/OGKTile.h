@@ -14,7 +14,7 @@
 @property (readonly) int y;
 @property NSString *name;
 @property BOOL isEvil;
-@property BOOL hasFogOfWar;
+@property BOOL isGoal;
 
 - (instancetype)initWithName:(NSString *)name X:(int)x Y:(int)y;
 

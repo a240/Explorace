@@ -16,7 +16,9 @@
 @property (nonatomic, readonly) unsigned long heightInTiles;
 
 - (instancetype)initWithString:(NSString *)string WithWidth:(int)width;
+- (instancetype)initWithArray:(NSArray *)array WithWidth:(int)width;
 - (OGKTile *)getTileAtX:(int)x Y:(int)y;
+- (NSArray *)getTilesWithName:(NSString *)name;
 - (BOOL)checkTileExistAtX:(int)x Y:(int)y;
 
 @end
