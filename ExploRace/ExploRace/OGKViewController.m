@@ -10,6 +10,7 @@
 #import "OGKMenuScene.h"
 #import "OGKMapScene.h"
 #import "OGKBubbleTapScene.h"
+#import "OGKAccelerometerShooterScene.h"
 @import AVFoundation;
 
 @interface OGKViewController ()

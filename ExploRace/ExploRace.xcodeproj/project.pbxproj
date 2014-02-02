@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E085DD1189ECE80000004E2 /* OGKAccelerometerShooterScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E085DD0189ECE80000004E2 /* OGKAccelerometerShooterScene.m */; };
 		E2CEF35C189A035400344630 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35B189A035400344630 /* Foundation.framework */; };
 		E2CEF35E189A035400344630 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35D189A035400344630 /* CoreGraphics.framework */; };
 		E2CEF360189A035400344630 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CEF35F189A035400344630 /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E085DCF189ECE80000004E2 /* OGKAccelerometerShooterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGKAccelerometerShooterScene.h; sourceTree = "<group>"; };
+		6E085DD0189ECE80000004E2 /* OGKAccelerometerShooterScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGKAccelerometerShooterScene.m; sourceTree = "<group>"; };
 		E2CEF358189A035400344630 /* ExploRace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploRace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2CEF35B189A035400344630 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2CEF35D189A035400344630 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 		E2316DC3189B0EAE005FFD1F /* Minigames */ = {
 			isa = PBXGroup;
 			children = (
+				6E085DCF189ECE80000004E2 /* OGKAccelerometerShooterScene.h */,
+				6E085DD0189ECE80000004E2 /* OGKAccelerometerShooterScene.m */,
 				F6177FA3189E01AB00158A3E /* OGKBubbleTapScene.h */,
 				F6177FA4189E01AB00158A3E /* OGKBubbleTapScene.m */,
 				F6177FA6189E1DA500158A3E /* OGKMiniGameScene.h */,
@@ -375,6 +380,7 @@
 				F6C59398189B78B700CA2AE7 /* OGKPlayer.m in Sources */,
 				E2CEF36E189A035400344630 /* OGKAppDelegate.m in Sources */,
 				F60C838B189A2887009C9584 /* OGKMenuScene.m in Sources */,
+				6E085DD1189ECE80000004E2 /* OGKAccelerometerShooterScene.m in Sources */,
 				F60C838A189A2887009C9584 /* OGKMapScene.m in Sources */,
 				F6177FA5189E01AB00158A3E /* OGKBubbleTapScene.m in Sources */,
 				F6177F9F189D909900158A3E /* OGKGameTimer.m in Sources */,
