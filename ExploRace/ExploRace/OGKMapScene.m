@@ -52,6 +52,10 @@ typedef NS_ENUM(NSUInteger, StateType) {
 - (void)willMoveFromView:(SKView *)view
 {
     [super willMoveFromView:view];
+    [self.view removeGestureRecognizer:self.swipeLeftDirectionGestureRecognizer];
+    [self.view removeGestureRecognizer:self.swipeRightDirectionGestureRecognizer];
+    [self.view removeGestureRecognizer:self.swipeUpDirectionGestureRecognizer];
+    [self.view removeGestureRecognizer:self.swipeDownDirectionGestureRecognizer];
 }
 
 - (void)didSimulatePhysics
@@ -215,7 +219,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (void)playMiniGame
 {
-    NSArray *miniGameScenes = @[NSClassFromString(@"OGKBubbleTapScene")];
+    NSArray *miniGameScenes = @[NSClassFromString(@"OGKFishCollectScene")];
     
     uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
     Class sceneClass = [miniGameScenes objectAtIndex:rand];

@@ -34,9 +34,7 @@
 
 - (void)willMoveFromView:(SKView *)view
 {
-    for (UIGestureRecognizer *recognizer in self.view.gestureRecognizers) {
-        [self.view removeGestureRecognizer:recognizer];
-    }
+    
 }
 
 - (void)createContent

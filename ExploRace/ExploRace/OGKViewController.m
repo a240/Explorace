@@ -43,7 +43,7 @@
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
     self.backgroundMusicPlayer.numberOfLoops = -1;
     [self.backgroundMusicPlayer prepareToPlay];
-    [self.backgroundMusicPlayer play];
+    // [self.backgroundMusicPlayer play];
 }
 
 - (BOOL)shouldAutorotate
