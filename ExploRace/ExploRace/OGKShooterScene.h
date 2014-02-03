@@ -10,7 +10,7 @@
 #import "OGKMiniGameScene.h"
 
 
-@interface OGKAccelerometerShooterScene : OGKMiniGameScene
+@interface OGKShooterScene : OGKMiniGameScene
 
 
 

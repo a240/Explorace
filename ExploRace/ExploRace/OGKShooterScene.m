@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 OGK. All rights reserved.
 //
 
-#import "OGKAccelerometerShooterScene.h"
+#import "OGKShooterScene.h"
 #import <CoreMotion/CoreMotion.h>
 #define ENERGY_BALL_VELOCITY 250
 #define ENEMY_VELOCITY 150
 
-@interface OGKAccelerometerShooterScene () <SKPhysicsContactDelegate>
+@interface OGKShooterScene () <SKPhysicsContactDelegate>
 @property SKNode *enemies;
 @property SKSpriteNode *staff;
 @property SKSpriteNode *energyBall;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation OGKAccelerometerShooterScene
+@implementation OGKShooterScene
 static const uint32_t projectileCategory = 0x1 <<0;
 static const uint32_t monsterCategory = 0x1 << 1;
 
@@ -48,7 +48,7 @@ static const int numEnemies = 6;
     [super update:currentTime];
     
     //resize ball based on y position
-    [self scaleEnergyBall];
+    [self scaleSprite:self.energyBall];
     
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
@@ -204,7 +204,6 @@ static const int numEnemies = 6;
 
 - (void)swipUpDirection:(UISwipeGestureRecognizer *)recognizer
 {
-    NSLog(@"test");
     if(self.ballIsActive == NO)
     {
         self.ballIsActive =  YES;
@@ -225,20 +224,10 @@ static const int numEnemies = 6;
     
 }
 
--(void)scaleEnergyBall
-{
-    [self scaleSprite:self.energyBall];
-    self.energyBall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.energyBall.size.width/2];
-    self.energyBall.physicsBody.dynamic = YES;
-    self.energyBall.physicsBody.categoryBitMask = projectileCategory;
-    self.energyBall.physicsBody.contactTestBitMask = monsterCategory;
-    self.energyBall.physicsBody.collisionBitMask = 0;
-    self.energyBall.physicsBody.usesPreciseCollisionDetection = YES;
-}
+
 
 -(void)energyBall:(SKSpriteNode *)energyBall didCollideWithEnemy: (SKSpriteNode *)enemy
 {
-    NSLog(@"Hit");
     [energyBall removeFromParent];
     energyBall = nil;
     self.ballIsActive = NO;
