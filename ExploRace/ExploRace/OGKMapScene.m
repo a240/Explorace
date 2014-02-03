@@ -11,6 +11,7 @@
 #import "OGKTileMapNode.h"
 #import "OGKPlayer.h"
 #import "OGKMiniGameScene.h"
+#import "OGKWinScene.h"
 
 #define TIME_TO_MOVE 1
 
@@ -68,7 +69,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     [super createContent];
     
     // Tile map
-    self.tileMap = [self generateTileMapWithWidth:6 AndHeight:6];
+    self.tileMap = [self getExampleTileMap];
     self.tileMapNode = [[OGKTileMapNode alloc] initWithTileMap:self.tileMap];
     [self.world addChild:self.tileMapNode];
     
@@ -79,8 +80,10 @@ typedef NS_ENUM(NSUInteger, StateType) {
     [self cameraFollowNode:self.player];
     
     // Create Spawn Tile
-    self.currentTile = [self.tileMap getTileAtX:0 Y:0];
+    // Hard coding this values for DEMO, I know its bad
+    self.currentTile = [self.tileMap getTileAtX:3 Y:3];
     SKSpriteNode *currentTileNode = [self.tileMapNode getTileNodeAtX:self.currentTile.x Y:self.currentTile.y];
+    [self removeEvilCloudFromTileAtX:3 Y:3 Radius:0];
     self.player.position = currentTileNode.position;
     
     [self setCameraBoundsToWorld];
@@ -127,6 +130,22 @@ typedef NS_ENUM(NSUInteger, StateType) {
             }
         }
     }
+}
+
+- (OGKTileMap *)getExampleTileMap
+{
+    NSString *mapCVS = @"MountainTile,BlankTile,BlankTile,ValleyTile,MountainTile,ValleyTile,BlankTile,SwampTile,BlankTile,LakeTile,BlankTile,SwampTile,ValleyTile,CrystalTile,LakeTile,BlankTile,SwampTile,MountainTile,BlankTile,MountainTile,BlankTile,BlankTile,ValleyTile,ValleyTile,ValleyTile,ValleyTile,BlankTile,SwampTile,ValleyTile,BlankTile,LakeTile,SwampTile,LakeTile,ValleyTile,ValleyTile,LakeTile";
+    
+    OGKTileMap *tileMap = [[OGKTileMap alloc] initWithString:mapCVS WithWidth:6];
+    
+    for (OGKTile *tile in [tileMap getTilesWithName:@"CrystalTile"])
+    {
+        tile.isGoal = YES;
+        tile.isEvil = NO;
+    }
+    
+    
+    return tileMap;
 }
 
 - (OGKTileMap *)generateTileMapWithWidth:(int)width AndHeight:(int)height
@@ -205,7 +224,9 @@ typedef NS_ENUM(NSUInteger, StateType) {
         self.currentTile = tile;
         if (self.currentTile.isGoal)
         {
-            NSLog(@"YOU WIN");
+            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration:0.5];
+            OGKWinScene *winScene = [[OGKWinScene alloc] init];
+            [self.view presentScene:winScene transition:doors];
         }
         if (self.currentTile.isEvil)
         {
@@ -220,10 +241,14 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (void)playMiniGame
 {
+    static int index = 0;
+    index++;
     NSArray *miniGameScenes = @[NSClassFromString(@"OGKShooterScene"), NSClassFromString(@"OGKBubbleTapScene"), NSClassFromString(@"OGKFishCollectScene")];
-    
-    uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
-    Class sceneClass = [miniGameScenes objectAtIndex:rand];
+
+//    uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
+//    Class sceneClass = [miniGameScenes objectAtIndex:rand];
+//    OGKMiniGameScene *miniGameScene = [[sceneClass alloc] initWithSize:self.size ReturnScene:self];
+    Class sceneClass = [miniGameScenes objectAtIndex:(index % miniGameScenes.count)];
     OGKMiniGameScene *miniGameScene = [[sceneClass alloc] initWithSize:self.size ReturnScene:self];
     
     SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration:0.5];
