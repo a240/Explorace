@@ -46,7 +46,7 @@ static const int numEnemies = 6;
     [super update:currentTime];
     
     //resize ball based on y position
-//    [self scaleSprite:self.energyBall];
+   [self scaleSprite:self.energyBall];
     
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
@@ -114,8 +114,8 @@ static const int numEnemies = 6;
     self.staff = [self createStaff];
     [self.uiLayer addChild:self.staff];
     
-    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"Tree"];
-    tree.position=CGPointMake(self.frame.size.width - tree.size.width/2, 0);
+    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"WastelandTree"];
+    tree.position=CGPointMake(self.frame.size.width - tree.size.width/2, tree.size.height/2);
     [self.world addChild:tree];
     
     self.enemiesRemaining = numEnemies;
