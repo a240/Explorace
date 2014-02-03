@@ -47,15 +47,7 @@
     [self addChild:self.world];
     [self addChild:self.uiLayer];
     
-    // Game Timer
-    self.gameTimer = [OGKGameTimer sharedInstance];
-    [self.gameTimer runForTime:DEFAULT_TIME_TO_PLAY];
-    
-    // Add Timer
-    self.timerNode = [[OGKTimerUINode alloc] init];
-    CGRect timerNodeRect = [self.timerNode calculateAccumulatedFrame];
-    self.timerNode.position = CGPointMake(0, self.size.height - timerNodeRect.size.height);
-    [self.uiLayer addChild:self.timerNode];
+    // Add score
     
     // Camera
     self.camera = [SKNode node];
