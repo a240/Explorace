@@ -45,6 +45,8 @@ static const int numEnemies = 6;
 {
     [super update:currentTime];
     
+    [self scaleSprite:self.energyBall];
+    
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
         self.currentState = GameStateTransitioning;
