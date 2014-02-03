@@ -48,13 +48,17 @@ static const int numEnemies = 6;
     [super update:currentTime];
     
     //resize ball based on y position
-    //[self scaleSprite:self.energyBall];
+    [self scaleEnergyBall];
     
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
         [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
         self.currentState = GameStateTransitioning;
         [self returnToSceneFadeToBackgroundImageNamed:@"WastelandBackgroundGood"];
+    }
+    
+    if (self.energyBall.position.y > self.frame.size.height + self.energyBall.frame.size.height){
+        self.ballIsActive = NO;
     }
     
     //enemies exiting screen to left
@@ -100,6 +104,7 @@ static const int numEnemies = 6;
          }];
     }
     
+    
     self.swipeUpDirectionBallGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
     [self.view addGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
     [self.swipeUpDirectionBallGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
@@ -108,15 +113,15 @@ static const int numEnemies = 6;
     self.ballIsActive = NO;
     
     self.staff = [self createStaff];
-    [self.world addChild:self.staff];
+    [self.uiLayer addChild:self.staff];
     
     
     self.enemiesRemaining = numEnemies;
     self.enemies = [[SKNode alloc] init];
-    [self.world addChild:self.enemies];
     for (int i=0; i<numEnemies; i++) {
         [self.enemies addChild: [self createEnemy]];
     }
+    [self.world addChild:self.enemies];
     
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = self;
@@ -193,26 +198,23 @@ static const int numEnemies = 6;
     energyBall.physicsBody.contactTestBitMask = monsterCategory;
     energyBall.physicsBody.collisionBitMask = 0;
     energyBall.physicsBody.usesPreciseCollisionDetection = YES;
-    
-    
-//    SKAction *scaleBall = [SKAction scaleBy:((self.frame.size.height - energyBall.position.y)/self.frame.size.height)/2 duration:1.0];
-//    SKAction *moveAndScale = [SKAction group:@[scaleBall, moveBallUpwords]];
-//    SKAction *moveAndScaleForever = [SKAction repeatActionForever: moveAndScale];
 
     return energyBall;
 }
 
 - (void)swipUpDirection:(UISwipeGestureRecognizer *)recognizer
 {
-//    NSLog(@"test");
-//    if(self.energyBall==nil)
-//    {
-//        self.energyBall= [self createEnergyBall];
-//        [self.world addChild: self.energyBall];
-//    }
-    self.energyBall= [self createEnergyBall];
-    [self.world addChild: self.energyBall];
+    NSLog(@"test");
+    if(self.ballIsActive == NO)
+    {
+        self.ballIsActive =  YES;
+        self.energyBall= [self createEnergyBall];
+        [self.world addChild: self.energyBall];
+    }
+
 }
+
+
 
 -(void)scaleSprite: (SKSpriteNode *) sprite
 {
@@ -220,21 +222,32 @@ static const int numEnemies = 6;
     scaleAmount = scaleAmount;
     SKAction *scaleSprite = [SKAction scaleTo:scaleAmount duration:0.0];
     [sprite runAction: scaleSprite];
+    
 }
 
+-(void)scaleEnergyBall
+{
+    self.energyBall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.energyBall.size.width/2];
+    self.energyBall.physicsBody.dynamic = YES;
+    self.energyBall.physicsBody.categoryBitMask = projectileCategory;
+    self.energyBall.physicsBody.contactTestBitMask = monsterCategory;
+    self.energyBall.physicsBody.collisionBitMask = 0;
+    self.energyBall.physicsBody.usesPreciseCollisionDetection = YES;
+    [self scaleSprite:self.energyBall];
+}
 
 -(void)energyBall:(SKSpriteNode *)energyBall didCollideWithEnemy: (SKSpriteNode *)enemy
 {
     NSLog(@"Hit");
     [energyBall removeFromParent];
+    energyBall = nil;
+    self.ballIsActive = NO;
     [enemy removeFromParent];
     self.enemiesRemaining -=1;
-    energyBall = nil;
 }
 
 - (void)didBeginContact: (SKPhysicsContact *) contact
 {
-    NSLog(@"did begin contact");
     SKPhysicsBody *firstBody, *secondBody;
     
     if(contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
