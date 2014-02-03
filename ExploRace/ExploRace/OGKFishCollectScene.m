@@ -89,6 +89,7 @@ static const uint32_t barrelCategory = 0x1 << 1;
 // Redo all this collision detection, its just bad
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
+    self.currentFishHeld = nil;
     SKNode *node = contact.bodyA.node;
     if (![node.name isEqualToString:@"Bad Fish"])
     {
@@ -185,7 +186,7 @@ static const uint32_t barrelCategory = 0x1 << 1;
     CGPoint spawnPoint = CGPointMake(self.size.width + badFish.size.width, self.size.height / 2);
     badFish.position = spawnPoint;
     double throwAngle = 3 * M_PI / 4;
-    double throwMagnitude = 70;
+    double throwMagnitude = 140;
     badFish.zRotation = -M_PI / 4;
     [badFish.physicsBody applyAngularImpulse:0.005];
     [badFish.physicsBody applyImpulse: CGVectorMake(throwMagnitude * cosf(throwAngle), throwMagnitude * sinf(throwAngle))];

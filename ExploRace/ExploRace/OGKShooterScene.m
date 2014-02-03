@@ -45,9 +45,6 @@ static const int numEnemies = 6;
 {
     [super update:currentTime];
     
-    //resize ball based on y position
-//    [self scaleSprite:self.energyBall];
-    
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
         self.currentState = GameStateTransitioning;
@@ -82,25 +79,6 @@ static const int numEnemies = 6;
 -(void)createContent
 {
     [super createContent];
-    
-//    self.motionManager = [[CMMotionManager alloc] init];
-//    if([self.motionManager isDeviceMotionAvailable]) {
-//        [self.motionManager setAccelerometerUpdateInterval:1.0/30.0];
-//        [self.motionManager startDeviceMotionUpdates];
-//        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error)
-//         {
-//             if(self.referenceAttitude) {
-//                 self.referenceAttitude = motion.attitude;
-//             }
-//             else if(!self.scene.isPaused) {
-//                 CMAttitude *attitude = motion.attitude;
-//                 // Multiply by the inverse of the reference attitude so motion is relative to the start attitude.
-//                 [attitude multiplyByInverseOfAttitude:_referenceAttitude];
-//                 [self.energyBall.physicsBody applyImpulse:CGVectorMake(attitude.roll * 250, -attitude.pitch * 200)];
-//             }
-//         }];
-//    }
-    
     
     // Add Gesture
     self.swipeUpDirectionBallGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
