@@ -59,6 +59,7 @@ static const int numEnemies = 6;
     
     if (self.energyBall.position.y > self.frame.size.height + self.energyBall.frame.size.height){
         self.ballIsActive = NO;
+        [self.energyBall removeFromParent];
     }
     
     //enemies exiting screen to left
