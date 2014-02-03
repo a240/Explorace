@@ -219,7 +219,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (void)playMiniGame
 {
-    NSArray *miniGameScenes = @[NSClassFromString(@"OGKFishCollectScene")];
+    NSArray *miniGameScenes = @[NSClassFromString(@"OGKAccelerometerShooterScene")];
     
     uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
     Class sceneClass = [miniGameScenes objectAtIndex:rand];

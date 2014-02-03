@@ -7,6 +7,7 @@
 //
 
 #import "OGKAccelerometerShooterScene.h"
+#import <CoreMotion/CoreMotion.h>
 #define ENERGY_BALL_VELOCITY 150
 #define ENEMY_VELOCITY 150
 
@@ -15,6 +16,9 @@
 @property SKSpriteNode *staff;
 @property SKSpriteNode *energyBall;
 @property BOOL ballIsActive;
+@property int enemiesRemaining;
+@property (strong,nonatomic) CMMotionManager *motionManager;
+@property CMAttitude *referenceAttitude;
 
 @property UISwipeGestureRecognizer *swipeUpDirectionBallGestureRecognizer;
 @end
@@ -25,15 +29,24 @@ static const uint32_t monsterCategory = 0x1 << 1;
 
 static const int numEnemies = 6;
 
+- (void)didMoveToView:(SKView *)view
+{
+     self.motionManager = [[CMMotionManager alloc] init];
+}
 
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
     
     //resize ball based on y position
-    [self scaleSprite:self.energyBall];
+    //[self scaleSprite:self.energyBall];
     
-    
+    if (self.enemiesRemaining < 1)
+    {
+        [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
+        self.currentState = GameStateTransitioning;
+        [self returnToSceneFadeToBackgroundImageNamed:@"SwampBackgroundGood"];
+    }
     
     //enemies exiting screen to left
     [self.enemies enumerateChildNodesWithName:@"enemyMovingLeft" usingBlock:^(SKNode *node, BOOL *stop) {
@@ -53,24 +66,36 @@ static const int numEnemies = 6;
         }
     }];
     
-    if (self.frame.size.height - self.energyBall.position.y < 50)
-    {
-        NSLog(@"check");
-        self.currentState = GameStateTransitioning;
-        [self returnToSceneFadeToBackgroundImageNamed:@"SwampBackgroundGood"];
-    }
+    
 }
 
 - (void)willMoveFromView:(SKView *)view
 {
     [super willMoveFromView:view];
-    [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
     
 }
 
 -(void)createContent
 {
     [super createContent];
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    if([self.motionManager isDeviceMotionAvailable]) {
+        [self.motionManager setAccelerometerUpdateInterval:1.0/30.0];
+        [self.motionManager startDeviceMotionUpdates];
+        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error)
+         {
+             if(self.referenceAttitude) {
+                 self.referenceAttitude = motion.attitude;
+             }
+             else if(!self.scene.isPaused) {
+                 CMAttitude *attitude = motion.attitude;
+                 // Multiply by the inverse of the reference attitude so motion is relative to the start attitude.
+                 [attitude multiplyByInverseOfAttitude:_referenceAttitude];
+                 [self.energyBall.physicsBody applyImpulse:CGVectorMake(attitude.roll * 250, -attitude.pitch * 200)];
+             }
+         }];
+    }
     
     self.swipeUpDirectionBallGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
     [self.view addGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
@@ -83,6 +108,7 @@ static const int numEnemies = 6;
     [self.world addChild:self.staff];
     
     
+    self.enemiesRemaining = numEnemies;
     self.enemies = [[SKNode alloc] init];
     [self.world addChild:self.enemies];
     for (int i=0; i<numEnemies; i++) {
@@ -133,9 +159,11 @@ static const int numEnemies = 6;
     [enemy runAction:[SKAction repeatActionForever:(moveSideways)]];
     
     //physics
+    enemy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:enemy.size];
     enemy.physicsBody.dynamic = YES;
     enemy.physicsBody.categoryBitMask = monsterCategory;
     enemy.physicsBody.contactTestBitMask = projectileCategory;
+    enemy.physicsBody.collisionBitMask = 0;
     
     return enemy;
 }
@@ -151,32 +179,36 @@ static const int numEnemies = 6;
         CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+ (energyBall.size.height/4)*3);
     energyBall.position = ballSpawn;
     
+    //movement
+    SKAction *moveBallUpwords = [SKAction moveByX:0.0 y:ENERGY_BALL_VELOCITY duration:1];
+    SKAction *moveBallForever = [SKAction repeatActionForever: moveBallUpwords];
+    [energyBall runAction:  moveBallForever];
     //physics
     energyBall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:energyBall.size.width/2];
     energyBall.physicsBody.dynamic = YES;
     energyBall.physicsBody.categoryBitMask = projectileCategory;
     energyBall.physicsBody.contactTestBitMask = monsterCategory;
+    energyBall.physicsBody.collisionBitMask = 0;
+    energyBall.physicsBody.usesPreciseCollisionDetection = YES;
     
     
-//    SKAction *moveBallUpwords = [SKAction moveByX:0.0 y:ENERGY_BALL_VELOCITY duration:1];
-//    SKAction *moveBallForever = [SKAction repeatActionForever: moveBallUpwords];
 //    SKAction *scaleBall = [SKAction scaleBy:((self.frame.size.height - energyBall.position.y)/self.frame.size.height)/2 duration:1.0];
 //    SKAction *moveAndScale = [SKAction group:@[scaleBall, moveBallUpwords]];
 //    SKAction *moveAndScaleForever = [SKAction repeatActionForever: moveAndScale];
-//    
-    //[energyBall runAction:  moveBallForever];
-    
+
     return energyBall;
 }
 
 - (void)swipUpDirection:(UISwipeGestureRecognizer *)recognizer
 {
-    NSLog(@"test");
-    if(self.energyBall==nil)
-    {
-        self.energyBall= [self createEnergyBall];
-        [self.world addChild: self.energyBall];
-    }
+//    NSLog(@"test");
+//    if(self.energyBall==nil)
+//    {
+//        self.energyBall= [self createEnergyBall];
+//        [self.world addChild: self.energyBall];
+//    }
+    self.energyBall= [self createEnergyBall];
+    [self.world addChild: self.energyBall];
 }
 
 -(void)scaleSprite: (SKSpriteNode *) sprite
@@ -193,6 +225,8 @@ static const int numEnemies = 6;
     NSLog(@"Hit");
     [energyBall removeFromParent];
     [enemy removeFromParent];
+    self.enemiesRemaining -=1;
+    energyBall = nil;
 }
 
 - (void)didBeginContact: (SKPhysicsContact *) contact
