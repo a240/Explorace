@@ -27,6 +27,7 @@
 
 - (void)createSceneConents
 {
+    [self addBackgroundImageFromName:@"MainMenuBackground"];
     self.backgroundColor = [SKColor blueColor];
     self.scaleMode = SKSceneScaleModeAspectFill;
     [self addChild:[self newMenuLabel]];
