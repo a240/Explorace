@@ -12,4 +12,6 @@
 
 @interface OGKAccelerometerShooterScene : OGKMiniGameScene
 
+
+
 @end

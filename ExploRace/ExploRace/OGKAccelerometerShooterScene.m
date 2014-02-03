@@ -19,8 +19,8 @@
 @property int enemiesRemaining;
 @property (strong,nonatomic) CMMotionManager *motionManager;
 @property CMAttitude *referenceAttitude;
-
 @property UISwipeGestureRecognizer *swipeUpDirectionBallGestureRecognizer;
+
 @end
 
 @implementation OGKAccelerometerShooterScene
@@ -31,7 +31,16 @@ static const int numEnemies = 6;
 
 - (void)didMoveToView:(SKView *)view
 {
+    [super didMoveToView:view];
+    
      self.motionManager = [[CMMotionManager alloc] init];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
 }
 
 - (void)update:(NSTimeInterval)currentTime
@@ -66,12 +75,6 @@ static const int numEnemies = 6;
         }
     }];
     
-    
-}
-
-- (void)willMoveFromView:(SKView *)view
-{
-    [super willMoveFromView:view];
     
 }
 
