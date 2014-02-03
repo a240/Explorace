@@ -8,7 +8,7 @@
 
 #import "OGKAccelerometerShooterScene.h"
 #import <CoreMotion/CoreMotion.h>
-#define ENERGY_BALL_VELOCITY 150
+#define ENERGY_BALL_VELOCITY 250
 #define ENEMY_VELOCITY 150
 
 @interface OGKAccelerometerShooterScene () <SKPhysicsContactDelegate>
@@ -125,9 +125,9 @@ static const int numEnemies = 6;
 
 -(SKSpriteNode *)createStaff{
     SKSpriteNode *staff;
-    staff = [SKSpriteNode spriteNodeWithImageNamed:@"GoodBubble"];
+    staff = [SKSpriteNode spriteNodeWithImageNamed:@"Staff"];
     CGPoint bottomOfScreen =
-    CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+ staff.size.height/2);
+    CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+50);
     staff.position = bottomOfScreen;
     return staff;
 }
@@ -135,9 +135,9 @@ static const int numEnemies = 6;
 -(SKSpriteNode *)createEnemy{
     //basic characteristics
     SKSpriteNode *enemy;
-    enemy = [SKSpriteNode spriteNodeWithImageNamed:@"BadBubble"];
+    enemy = [SKSpriteNode spriteNodeWithImageNamed:@"Lizard3"];
     float widthBorder = self.frame.size.width/10;
-    float heightBorder = self.frame.size.height/5;
+    float heightBorder = self.frame.size.height/4;
     float xpos=(arc4random() % (int) (self.frame.size.width - 2*widthBorder))+widthBorder;
     float ypos=(arc4random() % (int) (self.frame.size.height - heightBorder))+heightBorder;
     enemy.position = CGPointMake(xpos, ypos);
