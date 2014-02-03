@@ -7,14 +7,19 @@
 //
 
 #import "OGKFishCollectScene.h"
-#define DEFAULT_FISH_TO_COLLECT 9
+#define DEFAULT_FISH_TO_COLLECT 3
 
-@interface OGKFishCollectScene ()
+static const uint32_t fishCategory = 0x1 << 0;
+static const uint32_t barrelCategory = 0x1 << 1;
+
+@interface OGKFishCollectScene () <SKPhysicsContactDelegate>
 
 @property SKNode *fishCollection;
-@property NSNumber *amountOfFishToCollect;
+@property int amountOfFishToCollect;
 @property SKLabelNode *amountToCollectLabel;
 @property SKSpriteNode *currentFishHeld;
+@property SKSpriteNode *barrelCollectionNode;
+@property SKNode *fishSpawner;
 
 @end
 
@@ -24,10 +29,13 @@
 {
     [super createContent];
     
+    // Set up physics world
+    self.physicsWorld.contactDelegate = self;
+    self.physicsWorld.gravity = CGVectorMake(0, -5);
     
-    self.amountOfFishToCollect = [NSNumber numberWithInt:DEFAULT_FISH_TO_COLLECT];
-    self.amountToCollectLabel = [[SKLabelNode alloc] initWithFontNamed:@"AvenirNext-HeavyItalic"];
-    self.amountToCollectLabel.text = self.amountOfFishToCollect.stringValue;
+    // Determine the amount of fish to collect
+    self.amountOfFishToCollect = DEFAULT_FISH_TO_COLLECT;
+    
     
     // Set up scene
     [self addBackgroundImageFromName:@"BoatBackgroundBad"];
@@ -37,10 +45,37 @@
     boat.anchorPoint = CGPointZero;
     [self.uiLayer addChild:boat];
     
+    // Amount To Collect UI
+    self.amountToCollectLabel = [[SKLabelNode alloc] initWithFontNamed:@"AvenirNext-HeavyItalic"];
+    self.amountToCollectLabel.text = [NSNumber numberWithInteger:self.amountOfFishToCollect].stringValue;
+    self.amountToCollectLabel.fontColor = [UIColor whiteColor];
+    self.amountToCollectLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    self.amountToCollectLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    self.amountToCollectLabel.position = CGPointMake(boat.size.width / 2, boat.size.height / 2);
+    [self.uiLayer addChild:self.amountToCollectLabel];
+    
+    
+    // Fish collection
     self.fishCollection = [[SKNode alloc] init];
     [self.world addChild:self.fishCollection];
     
-    // Spawn fish
+    // Barrel Collection Node
+    self.barrelCollectionNode = [[SKSpriteNode alloc] initWithColor:[UIColor yellowColor] size:CGSizeMake(100, 20)];
+    self.barrelCollectionNode.name = @"Barrel";
+    self.barrelCollectionNode.position = CGPointMake(self.size.width / 2, boat.size.height / 2);
+    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.barrelCollectionNode.frame];
+    self.physicsBody.categoryBitMask = barrelCategory;
+    self.physicsBody.contactTestBitMask = fishCategory;
+    self.physicsBody.collisionBitMask = 0;
+    self.physicsBody.dynamic = NO;
+    self.physicsBody.affectedByGravity = NO;
+    [self.world addChild:self.barrelCollectionNode];
+    
+    
+    
+    // Fish spawner
+    self.fishSpawner = [[SKNode alloc] init];
+    
     SKAction *throwFish = [SKAction runBlock:^{
         [self throwFish];
     }];
@@ -50,6 +85,33 @@
     
     
 }
+
+// Redo all this collision detection, its just bad
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKNode *node = contact.bodyA.node;
+    if (![node.name isEqualToString:@"Bad Fish"])
+    {
+        node = contact.bodyB.node;
+    }
+    [node removeFromParent];
+    
+    self.amountOfFishToCollect--;
+    if (self.amountOfFishToCollect <= 0) {
+        [self.amountToCollectLabel removeFromParent];
+    } else {
+        self.amountToCollectLabel.text = [NSString stringWithFormat:@"%d", self.amountOfFishToCollect];
+    }
+    
+    if (self.amountOfFishToCollect <= 0)
+    {
+        if (self.currentState != GameStateTransitioning)
+        {
+            [self returnToSceneFadeToBackgroundImageNamed:@"BoatBackgroundGood"];
+        }
+    }
+}
+
 
 - (void)update:(NSTimeInterval)currentTime
 {
@@ -119,11 +181,13 @@
 
 - (void)throwFish
 {
-    CGPoint spawnPoint = CGPointMake(self.size.width / 2, self.size.height / 2);
     SKSpriteNode *badFish = [self makeBadFish];
+    CGPoint spawnPoint = CGPointMake(self.size.width + badFish.size.width, self.size.height / 2);
     badFish.position = spawnPoint;
-    double throwAngle = M_PI / 2;
-    double throwMagnitude = 100;
+    double throwAngle = 3 * M_PI / 4;
+    double throwMagnitude = 70;
+    badFish.zRotation = -M_PI / 4;
+    [badFish.physicsBody applyAngularImpulse:0.005];
     [badFish.physicsBody applyImpulse: CGVectorMake(throwMagnitude * cosf(throwAngle), throwMagnitude * sinf(throwAngle))];
     
 }
@@ -176,6 +240,9 @@
 {
     SKSpriteNode *badFish = [[SKSpriteNode alloc] initWithImageNamed:@"FishBad"];
     badFish.name = @"Bad Fish";
+    badFish.physicsBody.categoryBitMask = fishCategory;
+    badFish.physicsBody.contactTestBitMask = barrelCategory;
+    badFish.physicsBody.collisionBitMask = 0;
     badFish.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:badFish.size];
     badFish.physicsBody.dynamic = YES;
     badFish.physicsBody.affectedByGravity = YES;
