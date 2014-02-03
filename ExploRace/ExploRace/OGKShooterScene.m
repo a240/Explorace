@@ -53,6 +53,7 @@ static const int numEnemies = 6;
     
     if (self.energyBall.position.y > self.frame.size.height + self.energyBall.frame.size.height){
         self.ballIsActive = NO;
+        [self.energyBall removeFromParent];
     }
     
     //enemies exiting screen to left
@@ -91,8 +92,8 @@ static const int numEnemies = 6;
     self.staff = [self createStaff];
     [self.uiLayer addChild:self.staff];
     
-    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"Tree"];
-    tree.position=CGPointMake(self.frame.size.width - tree.size.width/2, 0);
+    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"WastelandTree"];
+    tree.position=CGPointMake(self.frame.size.width - tree.size.width/2, tree.size.height/2);
     [self.world addChild:tree];
     
     self.enemiesRemaining = numEnemies;
