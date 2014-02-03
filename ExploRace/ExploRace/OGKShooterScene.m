@@ -186,7 +186,7 @@ static const int numEnemies = 6;
     energyBall = [SKSpriteNode spriteNodeWithImageNamed:@"GoodBubble"];
     energyBall.name = @"energyBall";
     CGPoint ballSpawn =
-        CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame)+ (energyBall.size.height/4)*3);
+    CGPointMake(CGRectGetMidX(self.frame), (self.staff.frame.size.height/4) * 3);
     energyBall.position = ballSpawn;
     
     //movement
