@@ -45,7 +45,7 @@ static const int numEnemies = 6;
     {
         [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
         self.currentState = GameStateTransitioning;
-        [self returnToSceneFadeToBackgroundImageNamed:@"SwampBackgroundGood"];
+        [self returnToSceneFadeToBackgroundImageNamed:@"WastelandBackgroundGood"];
     }
     
     //enemies exiting screen to left
@@ -101,7 +101,7 @@ static const int numEnemies = 6;
     [self.view addGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
     [self.swipeUpDirectionBallGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
     
-    [self addBackgroundImageFromName:@"SwampBackgroundBad"];
+    [self addBackgroundImageFromName:@"WastelandBackgroundBad"];
     self.ballIsActive = NO;
     
     self.staff = [self createStaff];
