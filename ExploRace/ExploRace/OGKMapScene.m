@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     [self.world addChild:self.tileMapNode];
     
     // Player
-    self.player = [[OGKPlayer alloc] initWithColor:[UIColor magentaColor] size:CGSizeMake(40, 60)];
+    self.player = [[OGKPlayer alloc] init];
     [self.world addChild:self.player];
     [self cameraFollowNode:self.player];
     
