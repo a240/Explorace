@@ -12,7 +12,7 @@
 #import "OGKPlayer.h"
 #import "OGKMiniGameScene.h"
 
-#define TIME_TO_MOVE 0.2
+#define TIME_TO_MOVE 1
 
 @interface OGKMapScene ()
 
@@ -74,6 +74,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
     // Player
     self.player = [[OGKPlayer alloc] init];
+    [self.player playIdle];
     [self.world addChild:self.player];
     [self cameraFollowNode:self.player];
     
@@ -219,7 +220,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
 
 - (void)playMiniGame
 {
-    NSArray *miniGameScenes = @[NSClassFromString(@"OGKAccelerometerShooterScene")];
+    NSArray *miniGameScenes = @[NSClassFromString(@"OGKShooterScene"), NSClassFromString(@"OGKBubbleTapScene"), NSClassFromString(@"OGKFishCollectScene")];
     
     uint32_t rand = arc4random_uniform((uint32_t) [miniGameScenes count]);
     Class sceneClass = [miniGameScenes objectAtIndex:rand];

@@ -15,10 +15,10 @@
 @property SKNode *enemies;
 @property SKSpriteNode *staff;
 @property SKSpriteNode *energyBall;
+
 @property BOOL ballIsActive;
 @property int enemiesRemaining;
-@property (strong,nonatomic) CMMotionManager *motionManager;
-@property CMAttitude *referenceAttitude;
+
 @property UISwipeGestureRecognizer *swipeUpDirectionBallGestureRecognizer;
 
 @end
@@ -32,8 +32,6 @@ static const int numEnemies = 6;
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    
-     self.motionManager = [[CMMotionManager alloc] init];
 }
 
 - (void)willMoveFromView:(SKView *)view
@@ -48,11 +46,10 @@ static const int numEnemies = 6;
     [super update:currentTime];
     
     //resize ball based on y position
-    [self scaleSprite:self.energyBall];
+//    [self scaleSprite:self.energyBall];
     
     if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
-        [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
         self.currentState = GameStateTransitioning;
         [self returnToSceneFadeToBackgroundImageNamed:@"WastelandBackgroundGood"];
     }
@@ -87,25 +84,26 @@ static const int numEnemies = 6;
 {
     [super createContent];
     
-    self.motionManager = [[CMMotionManager alloc] init];
-    if([self.motionManager isDeviceMotionAvailable]) {
-        [self.motionManager setAccelerometerUpdateInterval:1.0/30.0];
-        [self.motionManager startDeviceMotionUpdates];
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error)
-         {
-             if(self.referenceAttitude) {
-                 self.referenceAttitude = motion.attitude;
-             }
-             else if(!self.scene.isPaused) {
-                 CMAttitude *attitude = motion.attitude;
-                 // Multiply by the inverse of the reference attitude so motion is relative to the start attitude.
-                 [attitude multiplyByInverseOfAttitude:_referenceAttitude];
-                 [self.energyBall.physicsBody applyImpulse:CGVectorMake(attitude.roll * 250, -attitude.pitch * 200)];
-             }
-         }];
-    }
+//    self.motionManager = [[CMMotionManager alloc] init];
+//    if([self.motionManager isDeviceMotionAvailable]) {
+//        [self.motionManager setAccelerometerUpdateInterval:1.0/30.0];
+//        [self.motionManager startDeviceMotionUpdates];
+//        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error)
+//         {
+//             if(self.referenceAttitude) {
+//                 self.referenceAttitude = motion.attitude;
+//             }
+//             else if(!self.scene.isPaused) {
+//                 CMAttitude *attitude = motion.attitude;
+//                 // Multiply by the inverse of the reference attitude so motion is relative to the start attitude.
+//                 [attitude multiplyByInverseOfAttitude:_referenceAttitude];
+//                 [self.energyBall.physicsBody applyImpulse:CGVectorMake(attitude.roll * 250, -attitude.pitch * 200)];
+//             }
+//         }];
+//    }
     
     
+    // Add Gesture
     self.swipeUpDirectionBallGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipUpDirection:)];
     [self.view addGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
     [self.swipeUpDirectionBallGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
