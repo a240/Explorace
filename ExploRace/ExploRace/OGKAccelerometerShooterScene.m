@@ -41,7 +41,7 @@ static const int numEnemies = 6;
     //resize ball based on y position
     //[self scaleSprite:self.energyBall];
     
-    if (self.enemiesRemaining < 1)
+    if (self.enemiesRemaining < 1 && self.currentState !=GameStateTransitioning )
     {
         [self.view removeGestureRecognizer:self.swipeUpDirectionBallGestureRecognizer];
         self.currentState = GameStateTransitioning;
