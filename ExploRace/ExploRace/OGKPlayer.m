@@ -10,4 +10,9 @@
 
 @implementation OGKPlayer
 
+- (void)playWalkRight
+{
+//    [NSArray]
+}
+
 @end
