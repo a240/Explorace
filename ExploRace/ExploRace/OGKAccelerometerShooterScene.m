@@ -227,13 +227,13 @@ static const int numEnemies = 6;
 
 -(void)scaleEnergyBall
 {
+    [self scaleSprite:self.energyBall];
     self.energyBall.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.energyBall.size.width/2];
     self.energyBall.physicsBody.dynamic = YES;
     self.energyBall.physicsBody.categoryBitMask = projectileCategory;
     self.energyBall.physicsBody.contactTestBitMask = monsterCategory;
     self.energyBall.physicsBody.collisionBitMask = 0;
     self.energyBall.physicsBody.usesPreciseCollisionDetection = YES;
-    [self scaleSprite:self.energyBall];
 }
 
 -(void)energyBall:(SKSpriteNode *)energyBall didCollideWithEnemy: (SKSpriteNode *)enemy

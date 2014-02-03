@@ -10,7 +10,4 @@
 
 @interface OGKPlayer : SKSpriteNode
 
-
--
-
 @end
