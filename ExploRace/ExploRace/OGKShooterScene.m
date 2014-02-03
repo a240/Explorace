@@ -115,6 +115,9 @@ static const int numEnemies = 6;
     self.staff = [self createStaff];
     [self.uiLayer addChild:self.staff];
     
+    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"Tree"];
+    tree.position=CGPointMake(self.frame.size.width - tree.size.width/2, 0);
+    [self.world addChild:tree];
     
     self.enemiesRemaining = numEnemies;
     self.enemies = [[SKNode alloc] init];
