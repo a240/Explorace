@@ -8,9 +8,6 @@
 
 #import "OGKViewController.h"
 #import "OGKMenuScene.h"
-#import "OGKMapScene.h"
-#import "OGKBubbleTapScene.h"
-#import "OGKAccelerometerShooterScene.h"
 @import AVFoundation;
 
 @interface OGKViewController ()
@@ -31,8 +28,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    // SKScene * scene = [OGKMenuScene sceneWithSize:skView.bounds.size];
-    SKScene * scene = [OGKMapScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [OGKMenuScene sceneWithSize:skView.bounds.size];
     
     // Present the scene.
     [skView presentScene:scene];
@@ -43,7 +39,7 @@
     self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
     self.backgroundMusicPlayer.numberOfLoops = -1;
     [self.backgroundMusicPlayer prepareToPlay];
-    // [self.backgroundMusicPlayer play];
+    [self.backgroundMusicPlayer play];
 }
 
 - (BOOL)shouldAutorotate

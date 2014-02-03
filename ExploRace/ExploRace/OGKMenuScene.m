@@ -27,25 +27,26 @@
 
 - (void)createSceneConents
 {
-    [self addBackgroundImageFromName:@"MainMenuBackground"];
     self.backgroundColor = [SKColor blueColor];
     self.scaleMode = SKSceneScaleModeAspectFill;
-    [self addChild:[self newMenuLabel]];
-}
-
-- (SKLabelNode *)newMenuLabel
-{
-    SKLabelNode *menuLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    menuLabel.name = @"menuNode";
-    menuLabel.text = @"Explorace";
-    menuLabel.fontSize = 42;
-    menuLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    return menuLabel;
+    SKSpriteNode *background = [[SKSpriteNode alloc] initWithImageNamed:@"MenuBackground"];
+    background.anchorPoint = CGPointZero;
+    [self addChild:background];
+    
+    SKSpriteNode *playButton = [[SKSpriteNode alloc] initWithImageNamed:@"PlayButton1"];
+    NSArray *textures = @[[SKTexture textureWithImageNamed:@"PlayButton1"], [SKTexture textureWithImageNamed:@"PlayButton2"], [SKTexture textureWithImageNamed:@"PlayButton3"]];
+    SKAction *animation = [SKAction animateWithTextures:textures timePerFrame:0.08];
+    SKAction *animationForever = [SKAction repeatActionForever:animation];
+    [playButton runAction:animationForever];
+    playButton.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    playButton.name = @"Play Button";
+    [self addChild:playButton];
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    SKNode *menuNode = [self childNodeWithName:@"menuNode"];
+    SKNode *menuNode = [self childNodeWithName:@"Play Button"];
     if (menuNode != nil) {
         menuNode.name = nil;
         SKAction *moveUp = [SKAction moveByX:0 y:100 duration:0.5];
