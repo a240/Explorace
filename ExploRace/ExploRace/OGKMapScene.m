@@ -12,7 +12,7 @@
 #import "OGKPlayer.h"
 #import "OGKMiniGameScene.h"
 
-#define TIME_TO_MOVE 0.2
+#define TIME_TO_MOVE 1
 
 @interface OGKMapScene ()
 
@@ -74,6 +74,7 @@ typedef NS_ENUM(NSUInteger, StateType) {
     
     // Player
     self.player = [[OGKPlayer alloc] init];
+    [self.player playIdle];
     [self.world addChild:self.player];
     [self cameraFollowNode:self.player];
     

@@ -41,8 +41,7 @@
 
 - (void)playIdle
 {
-    
-    
+    [self runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:self.idleTextures timePerFrame:0.1 resize:NO restore:YES]] withKey:@"WizardAnimation"];
 }
 
 @end
